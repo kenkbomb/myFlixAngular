@@ -9,6 +9,7 @@ import { FetchApiService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
@@ -18,20 +19,34 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export class UserLoginFormComponent {
 
-  @Input() userData = { Username: '', Password: '' };//declare the input data to be sent
+  //const router = new Router();
+
+  @Input() userData = { Username: '', Password: '' };
   constructor(
     public fetchApiData: FetchApiService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    private router:Router
+  ){}
 
   loginUser():void{
     this.fetchApiData.userLogin(this.userData).subscribe((result)=>{
-      console.log(JSON.stringify(result));//log the result to the console.
+      console.log(JSON.stringify(result.user));//log the result to the console.
       this.dialogRef.close();//close the modal
-      this.snackBar.open("Logged in " + result.user.Username +"!", 'OK', { duration: 2000});//similar to ALERT message popup
-      localStorage.setItem('user',JSON.stringify(result.user.Username));
+      this.snackBar.open("Logged in " + result.user.Username +"!", 'OK', { duration: 2000});//similar to ALERT message
+      const data = {
+        _id:result.user._id,
+        Username:result.user.Username,
+        Password:this.userData.Password,
+        Email:result.user.Email,
+        Birthday:result.user.Birthday,
+        Favorites:result.user.Favorites
+      }
+      console.log(data);
+      localStorage.setItem('user',JSON.stringify(data));//JSON.stringfy here on result.user...
       localStorage.setItem('token',result.token);
-      console.log(result.token);
+      console.log(result.user.Username);
+      this.router.navigate(['movies']);
 
     }
   )

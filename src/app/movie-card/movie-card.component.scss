@@ -1,0 +1,28 @@
+.card:hover{
+//transform:scale(1.05);
+transition: 0.5s;
+z-index: 10;
+background-color: black;
+color: rgb(245, 245, 245);
+border: 3px solid red;
+}
+.card{
+    transition: 1s;
+    z-index: 0;
+    background-color: rgb(255, 255, 255);
+    //backdrop-filter: blur(4px);
+    
+}
+
+.subText{
+color: gray;
+}
+.subText:hover{
+    color: whitesmoke;
+}
+.container{
+    background-color: darkslategrey;
+    max-height: 80%;
+
+    
+}

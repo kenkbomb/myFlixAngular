@@ -1,0 +1,59 @@
+<app-nav-bar></app-nav-bar>
+
+<h1 style="display: flex; justify-content: center; text-transform: capitalize;">Welcome {{userData.Username}}!</h1>
+<div style="text-align: center;">
+<h2>Account Details On File...</h2>
+<h3>Email: {{userData.Email}}</h3>
+<h3>Birthday: {{userData.Birthday}}</h3>
+<h3>Password:{{userData.Password}}</h3>
+
+<h2>Edit Profile</h2>
+<mat-card>
+    <mat-card-content>
+        <form>
+            <mat-form-field class="form-inputs">
+                <label>Birthday:</label>
+                <input
+                    matInput
+                    [(ngModel)]="userData.Birthday"
+                    placeholder="Birthday"
+                    type="date"
+                    name="BirthDay"
+                    required
+                >
+            </mat-form-field>
+            <mat-form-field class="form-inputs">
+                <label>Email:</label>
+                <input
+                    matInput
+                    [(ngModel)]="userData.Email"
+                    placeholder="update email"
+                    type="email"
+                    name="Email"
+                    required
+                >
+            </mat-form-field>
+           
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            mat-raised-button
+            (click)="updateUser()"
+            class="button-profile"
+            color="primary"
+        >
+            Update
+        </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <div >
+    <h1>Favs</h1>
+       <div *ngFor="let favs in favsList" >
+            <p>test</p>
+
+       </div>
+  </div>
+
+</div>  
