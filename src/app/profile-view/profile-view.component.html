@@ -2,10 +2,11 @@
 
 <h1 style="display: flex; justify-content: center; text-transform: capitalize;">Welcome {{userData.Username}}!</h1>
 <div style="text-align: center;">
-<h2>Account Details On File...</h2>
+<h2 style="text-decoration: underline;">Account Details On File...</h2>
+<h3>User Name: {{userData.Username}}</h3>
 <h3>Email: {{userData.Email}}</h3>
 <h3>Birthday: {{userData.Birthday}}</h3>
-<h3>Password:{{userData.Password}}</h3>
+
 
 <h2>Edit Profile</h2>
 <mat-card>
@@ -42,6 +43,7 @@
             (click)="updateUser()"
             class="button-profile"
             color="primary"
+            style="margin: 0 auto;"
         >
             Update
         </button>
@@ -49,9 +51,10 @@
   </mat-card>
 
   <div >
-    <h1>Favs</h1>
-       <div *ngFor="let favs in favsList" >
-            <p>test</p>
+    <h1 style="text-decoration: underline;">Your Favorited Movies...</h1>
+       <div *ngFor="let favs of favTitles" >
+
+            <li>{{favs}}</li>
 
        </div>
   </div>

@@ -4,7 +4,21 @@ transition: 0.5s;
 z-index: 10;
 background-color: black;
 color: rgb(245, 245, 245);
-border: 3px solid red;
+//border: 1px solid red;
+//padding: 3px;
+//margin: 6px;
+
+}
+
+img{
+    max-width: fit-content;
+    min-width: 22vw;
+    width:19vw;
+    max-height: 60vh;
+    height: 50vh;
+}
+.mct{
+    font-size: 1.5vw;
 }
 .card{
     transition: 1s;
@@ -14,7 +28,10 @@ border: 3px solid red;
     height: 75%;
     max-height: 50%;
     margin: 3px;
-    
+    width:22vw;
+}
+.mca{
+    margin-left: 4.5vw;
 }
 
 .subText{
@@ -29,6 +46,40 @@ color: gray;
     display: flex;
     flex-direction: row;
     width:max-content;
+    margin-top: 15vh;
+}
 
+@media screen and (max-width:600px){
     
+    .container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20vh;
+        background-color: whitesmoke;
+       // height: 100%;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        width: 90%;
+    }
+    .card{
+        box-sizing: border-box;
+        width:80vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: fit-content;
+        padding:0 ;
+    }
+    img{
+        width: 50vw;
+    }
+   .mca{
+    margin-left: 5vw;
+   }
+    .mct{
+        font-size: 4vw;
+    }
 }

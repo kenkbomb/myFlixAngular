@@ -1,9 +1,12 @@
 .nb{
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 10;
-    width: 100%;
+    left:0;
+    z-index: 100;
+    width: 100vw;
     box-sizing: border-box;
+    height: 30px;
+    
 }
 .navButtons{
     display: flex;
@@ -18,7 +21,7 @@
 }
 .navB:hover{
     background-color: black;
-    border: 2px solid red;
+   // border: 2px solid red;
     transition: 0.5s;
     border-radius: 10px;
     margin: 3px;

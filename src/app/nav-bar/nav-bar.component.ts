@@ -11,6 +11,14 @@ export class NavBarComponent {
 
   constructor(private router:Router){}
 
+  user:any = localStorage.getItem("user");
+  name:any = JSON.parse(this.user);
+  
+  getUser():string
+{
+  console.log(this.name.Username);
+  return this.name.Username;
+}
  logout():void
 {
   localStorage.setItem('user',"");
