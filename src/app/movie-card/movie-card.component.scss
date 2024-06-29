@@ -11,6 +11,9 @@ border: 3px solid red;
     z-index: 0;
     background-color: rgb(255, 255, 255);
     //backdrop-filter: blur(4px);
+    height: 75%;
+    max-height: 50%;
+    margin: 3px;
     
 }
 
@@ -23,6 +26,9 @@ color: gray;
 .container{
     background-color: darkslategrey;
     max-height: 80%;
+    display: flex;
+    flex-direction: row;
+    width:max-content;
 
     
 }

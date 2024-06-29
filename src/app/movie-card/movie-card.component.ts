@@ -34,6 +34,9 @@ export class MovieCardComponent implements OnInit {
     
     console.log(this.favList);
   }
+  getUser():void{
+    this.user = localStorage.getItem("user");
+  }
   //------------------------------------------------------------------------------------
   getMovies():void{
     this.fetchMovies.getAllMovies().subscribe((resp:any)=>
@@ -75,9 +78,11 @@ determineUserFavs(movie:string):any{
     this.fetchMovies.removeFavorite(ud.Username,id).subscribe((resp)=>
     {
      localStorage.setItem('user',JSON.stringify(resp));
-      alert("fav test here--REMOVE-- "+ ud.Username + " " + id);
+     this.getUser();//reset and reload the user data 
+     this.getFavs();//reset and reload the favslist from the new updated user data
     })
     this.snack.open("Movie Removed From Favs",'OK',{duration:1000})
+    alert("fav test here--REMOVE-- "+ ud.Username + " " + id);
    
   }
   //---------------------------------------------------------------------------------------------
@@ -86,9 +91,11 @@ determineUserFavs(movie:string):any{
     this.dialog.open(MovieInfoComponent,{
       width:'500px',
       data:{Description:description,}
-    
-  });
-    
-  }
+    });
+    }
+
+    openGenreDialog(genre:string):void{
+      
+    }
 
 }

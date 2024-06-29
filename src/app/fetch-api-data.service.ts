@@ -64,7 +64,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -75,7 +75,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -86,7 +86,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -96,7 +96,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -107,7 +107,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -126,7 +126,7 @@ export class FetchApiService {
         
         
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
@@ -136,10 +136,11 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
+  //-------------------------------------------------------------------------------------------
    public removeFavorite(userName:string,movie_id:string): Observable<any> {
     const token = localStorage.getItem('token');
     const favmov = {MovieID:movie_id}
@@ -147,12 +148,13 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData.toString),
+      map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
+  //-------------------------------------------------------------------------------------
 // Non-typed response extraction
-  private extractResponseData(res: Response): any {
+  public extractResponseData(res: Object): any {
     const body = res;
     return body || { };
   }

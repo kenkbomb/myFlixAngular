@@ -2,9 +2,11 @@
 <div class="nb">
 <mat-card>
 <mat-card-actions>
-<button (click)="gotoProfile()">Profile</button>
-<button (click) = "gotoMovies()">Movies</button>
-<button (click)="logout()">Logout</button>
+    <div class="navButtons" >
+<div  class="navB" (click)="gotoProfile()">Profile</div>
+<div class="navB" (click) = "gotoMovies()">Movies</div>
+<div class="navB" (click)="logout()">Logout</div>
+    </div>
 </mat-card-actions>
 
 </mat-card>
