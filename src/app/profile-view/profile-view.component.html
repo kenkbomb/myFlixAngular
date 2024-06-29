@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
 
 <h1 style="display: flex; justify-content: center; text-transform: capitalize;">Welcome {{userData.Username}}!</h1>
-<div style="text-align: center;">
+<div style="text-align: center; background-color: darkslategray;">
 <h2 style="text-decoration: underline;">Account Details On File...</h2>
 <h3>User Name: {{userData.Username}}</h3>
 <h3>Email: {{userData.Email}}</h3>
@@ -50,7 +50,7 @@
     </mat-card-actions>
   </mat-card>
 
-  <div >
+  <div style="padding-bottom: 10px;">
     <h1 style="text-decoration: underline;">Your Favorited Movies...</h1>
        <div *ngFor="let favs of favTitles" >
 
@@ -58,5 +58,9 @@
 
        </div>
   </div>
-
-</div>  
+  </div>  
+  <div style="display: flex;justify-content: center; flex-direction: column; margin-top: 10px;">
+  <label style="margin: auto;" >Delete Account?</label>
+  <input type="text" [(ngModel)] = "confirm" name = "confirm" placeholder="type 'unsubscribe' here"   style="margin: auto;"/>
+  <button (click)="deleteAccount()" style="width: fit-content; margin: auto;">confirm</button>
+  </div>

@@ -2,6 +2,7 @@ import { Component,OnInit,Output,Input } from '@angular/core';
 import { FetchApiService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-view',
@@ -14,14 +15,31 @@ export class ProfileViewComponent {
 // favList:[] = this.user0.Favorites;
 favList:[] = this.user0.Favorites;
 favTitles:any = [""];
-constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar){
+constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar,private router:Router){
    
 }
-
+@Input() confirm = "";
 ngOnInit():void{
  // console.log(this.user0[0].Username);
   this.getUserData();
   this.getFavs();
+}
+deleteAccount():void{
+  if(this.confirm==="unsubscribe")
+    {
+  alert(this.user0.Username);
+  this.fetchApiData.deleteUser(this.user0.Username).subscribe(()=>
+  {
+   
+    this.snack.open("account deleted!","OK",{duration:2000});
+    localStorage.setItem("user","");
+    localStorage.setItem("token","");
+    this.router.navigate(['welcome']);
+    
+  })
+  }
+  
+  if(this.confirm!="unsubscribe"){ alert("pleae type 'unsubscribe' into the textbox above to unsubscribe...");}
 }
 getFavs():any{
   this.fetchApiData.getAllMovies().subscribe((resp)=>

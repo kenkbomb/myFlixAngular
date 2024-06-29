@@ -131,6 +131,7 @@ export class FetchApiService {
     );
   }
  public deleteUser(userName:string): Observable<any> {
+  console.log(userName);
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/'+userName, {headers: new HttpHeaders(
       {
@@ -159,13 +160,14 @@ export class FetchApiService {
     return body || { };
   }
 
-private handleError(error: HttpErrorResponse): any {
+public handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
     } else {
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`+error);
+        alert("Opps, typo? please try again...");
     }
     return throwError(
     'Something bad happened; please try again later.');
