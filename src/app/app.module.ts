@@ -38,7 +38,8 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     MovieInfoComponent,
     ProfileViewComponent,
-    NavBarComponent
+    NavBarComponent,
+    
   ],
   imports: [
     BrowserModule,

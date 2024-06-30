@@ -69,7 +69,7 @@ determineUserFavs(movie:string):any{
       
     })
     this.snack.open("Movie Added To Favs!",'OK',{duration:1000});
-   alert("fav test here--ADD-- "+ ud.Username + " " + id);
+   
   }
   //-------------------------------------------------------------------------------------------
 
@@ -82,15 +82,16 @@ determineUserFavs(movie:string):any{
      this.getFavs();//reset and reload the favslist from the new updated user data
     })
     this.snack.open("Movie Removed From Favs",'OK',{duration:1000})
-    alert("fav test here--REMOVE-- "+ ud.Username + " " + id);
+   
    
   }
   //---------------------------------------------------------------------------------------------
-  openInfoDialog(description:String):void{
+  openInfoDialog(title:string,description:String,tagline:string,director:string,genre:string,release:string):void{
    
     this.dialog.open(MovieInfoComponent,{
       width:'500px',
-      data:{Description:description,}
+      data:{Title:title,Tagline:tagline,
+        Description:description,Director:director,Genre:genre,Release:release}
     });
     }
 

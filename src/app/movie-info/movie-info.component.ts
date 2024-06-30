@@ -1,6 +1,4 @@
 import { Component,OnInit,Inject,Input, input } from '@angular/core';
-import { FetchApiService } from '../fetch-api-data.service';
-import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-movie-info',
@@ -13,6 +11,12 @@ export class MovieInfoComponent implements OnInit {
     
     @Inject(MAT_DIALOG_DATA)
     public data:{
+      Title:string,
+      Tagline:string,
+      Director:string,
+      Genre:string,
+      Release: string,
+
     Description:string
   }){
     

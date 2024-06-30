@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatCard,MatCardActions } from '@angular/material/card';
 
 @Component({
   selector: 'app-nav-bar',
@@ -23,7 +22,7 @@ export class NavBarComponent {
 {
   localStorage.setItem('user',"");
   localStorage.setItem('token',"");
-  alert("logout pressed");
+  alert("Logged Out");
   this.router.navigate(['welcome']);
   
 }

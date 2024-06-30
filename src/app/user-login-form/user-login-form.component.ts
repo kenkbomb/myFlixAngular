@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 // You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatCard } from '@angular/material/card';
 
 // This import brings in the API calls we created in 6.2
 import { FetchApiService } from '../fetch-api-data.service';
@@ -43,6 +42,7 @@ export class UserLoginFormComponent {
         Favorites:result.user.Favorites
       }
       console.log(data);
+      console.log(result);
       localStorage.setItem('user',JSON.stringify(data));//JSON.stringfy here on result.user...
       localStorage.setItem('token',result.token);
       console.log(result.user.Username);

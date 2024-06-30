@@ -1,6 +1,5 @@
 import { Component,OnInit,Output,Input } from '@angular/core';
 import { FetchApiService } from '../fetch-api-data.service';
-import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -10,9 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './profile-view.component.scss'
 })
 export class ProfileViewComponent {
-  user0:any = JSON.parse(localStorage.getItem("user")||'');
-  //userParsedData:any = JSON.parse(this.user);
-// favList:[] = this.user0.Favorites;
+user0:any = JSON.parse(localStorage.getItem("user")||'');
 favList:[] = this.user0.Favorites;
 favTitles:any = [""];
 constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar,private router:Router){
@@ -20,14 +17,15 @@ constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar,private
 }
 @Input() confirm = "";
 ngOnInit():void{
- // console.log(this.user0[0].Username);
+ 
   this.getUserData();
   this.getFavs();
+ 
 }
 deleteAccount():void{
   if(this.confirm==="unsubscribe")
     {
-  alert(this.user0.Username);
+  
   const name = this.user0.Username;
   this.fetchApiData.deleteUser(name).subscribe((resp)=>
   {
@@ -44,7 +42,7 @@ deleteAccount():void{
 getFavs():any{
   this.fetchApiData.getAllMovies().subscribe((resp)=>
   {
-    //this.movies = resp;
+   
     this.favList.some((element)=>
     {
       for(let i=0;i<resp.length;i++)
@@ -52,7 +50,7 @@ getFavs():any{
           if(element===resp[i]._id)
             {
               console.log(resp[i].Title);
-             // return resp[i].Title;
+            
              this.favTitles.push(resp[i].Title);
             }
         }

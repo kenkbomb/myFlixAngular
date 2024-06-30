@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 
 // You'll use this import to close the dialog on success
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatCard } from '@angular/material/card';
 
 // This import brings in the API calls we created in 6.2
 import { FetchApiService } from '../fetch-api-data.service';
@@ -30,6 +29,9 @@ ngOnInit(): void {
 
 // This is the function responsible for sending the form inputs to the backend
 registerUser(): void {
+  if(this.userData.Username!=""&&this.userData.Password!=""&&this.userData.Email.includes("@")&&this.userData.Birthday!=""){
+    if(this.userData.Username.length>=2&&this.userData.Password.length>=4)
+      {
     this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
       console.log(JSON.stringify(result)); 
   // Logic for a successful user registration goes here! (To be implemented)
@@ -43,5 +45,8 @@ registerUser(): void {
       });
     });
   }
-
+  else{alert("usernames must be larger than 2 characters, passwords greater than 3!")}
+  }
+  else{alert("please correctly fill out all fields");}
+}
   }
