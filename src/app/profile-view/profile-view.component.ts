@@ -28,19 +28,19 @@ deleteAccount():void{
   if(this.confirm==="unsubscribe")
     {
   alert(this.user0.Username);
-  this.fetchApiData.deleteUser(this.user0.Username).subscribe(()=>
+  const name = this.user0.Username;
+  this.fetchApiData.deleteUser(name).subscribe((resp)=>
   {
-   
-    this.snack.open("account deleted!","OK",{duration:2000});
-    localStorage.setItem("user","");
-    localStorage.setItem("token","");
-    this.router.navigate(['welcome']);
-    
+    console.log(resp);
   })
   }
-  
-  if(this.confirm!="unsubscribe"){ alert("pleae type 'unsubscribe' into the textbox above to unsubscribe...");}
+  this.snack.open("account deleted!","OK",{duration:2000});
+  localStorage.clear();
+  this.router.navigate(['welcome']);
+  if(this.confirm!="unsubscribe"){ alert("please type 'unsubscribe' into the textbox above to unsubscribe...");}
 }
+
+
 getFavs():any{
   this.fetchApiData.getAllMovies().subscribe((resp)=>
   {

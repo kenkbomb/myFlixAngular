@@ -137,7 +137,7 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
-      map(this.extractResponseData),
+      map(this.extractResponseData.toString),
       catchError(this.handleError)
     );
   }
@@ -164,12 +164,19 @@ public handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
     } else {
+      if(error.status != 200)
+        {
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`+error);
-        alert("Opps, typo? please try again...");
+        //alert("Opps, typo? please try again...");
     }
+  if(error.status!=200)
+    {
     return throwError(
     'Something bad happened; please try again later.');
+    }
+    return [];
   }
+}
 }
