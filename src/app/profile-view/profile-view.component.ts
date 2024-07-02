@@ -65,8 +65,11 @@ updateUser():void{
     console.log(Response);
   })
   localStorage.setItem("user",JSON.stringify(this.userData));
+
   this.snack.open("user details updated","OK",{duration:2000});
+  this.user0 = JSON.parse(localStorage.getItem('user')||"");
   console.log(this.userData);
+  console.log(this.user0);
 }
 
 getUserData():void{
