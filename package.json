@@ -1,6 +1,7 @@
 {
   "name": "my-flix-angular",
   "version": "0.0.0",
+  "homepage": "https://github.com/kenkbomb/myFlixAngular.git",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
