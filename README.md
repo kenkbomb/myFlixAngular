@@ -1,5 +1,7 @@
 # MyFlixAngular
 
+This Angular App is a front-end counterpart to 'movie-api-rep' which serves as a backend to this application, as well as 'myFlix', which was made in React. Users can sign up and log in, where they will be brought to the main movie view, which simulates viewing and faving various movies. It makes use of certain Angular specific features such as Material Dialogs, Injection, Input and Output and other Angular specifics.  It was written in Typescript.  
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
 
 ## Development server
