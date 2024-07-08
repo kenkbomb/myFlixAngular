@@ -15,7 +15,7 @@ export class FetchApiService {
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
   }
- // Making the api call for the user registration endpoint
+ /**various api requests below */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -35,7 +35,6 @@ export class FetchApiService {
       {
         Authorization: 'Bearer ' + token,
       })}
-
     );
   }
 
@@ -49,8 +48,9 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
+
   getUser(): Observable<any> {
-    //console.log(JSON.stringify(localStorage.getItem('user')));
+    
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const ud = JSON.parse("");
     console.log(ud);
@@ -90,6 +90,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
+
   public getFavs(userName:string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'users/'+userName+"/favs", {headers: new HttpHeaders(
@@ -100,6 +101,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
+
   public addFav(userName:string,movie_id:string): Observable<any> {
     const token = localStorage.getItem('token');
     const favmov = {MovieID:movie_id}
@@ -111,27 +113,24 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
+
    public editUser(userDetails:any,userName:string): Observable<any> {
     const token = localStorage.getItem('token');
-    //console.log(JSON.stringify(userDetails) + " are the user details");
-    console.log(userDetails.Username);
+    //console.log(userDetails.Username);
     let body = userDetails;
-    //body =JSON.parse(body);
-   // console.log(body) + " this is the body")
-   JSON.stringify(body);
-   console.log(body);
+    JSON.stringify(body);
+    //console.log(body);
     return this.http.put<any>(apiUrl + 'users/'+userDetails.Username,body, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
-        
-        
       })}).pipe(
       map(this.extractResponseData),
       catchError(this.handleError)
     );
   }
+
  public deleteUser(userName:string): Observable<any> {
-  console.log(userName);
+  //console.log(userName);
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/'+userName, {headers: new HttpHeaders(
       {

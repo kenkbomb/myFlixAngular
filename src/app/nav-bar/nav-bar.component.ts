@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
+
 export class NavBarComponent {
 
   constructor(private router:Router){}
@@ -15,9 +16,10 @@ export class NavBarComponent {
   
   getUser():string
 {
-  console.log(this.name.Username);
+  //console.log(this.name.Username);
   return this.name.Username;
 }
+/**log out and clear local storage and navigate to welcome page */
  logout():void
 {
   localStorage.setItem('user',"");
@@ -26,6 +28,7 @@ export class NavBarComponent {
   this.router.navigate(['welcome']);
   
 }
+/**routing functions, goto movies and profile views */
 gotoMovies():void
 {
   this.router.navigate(['movies']);

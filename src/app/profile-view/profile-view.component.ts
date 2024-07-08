@@ -8,37 +8,37 @@ import { Router } from '@angular/router';
   templateUrl: './profile-view.component.html',
   styleUrl: './profile-view.component.scss'
 })
+
 export class ProfileViewComponent {
 user0:any = JSON.parse(localStorage.getItem("user")||'');
 favList:[] = this.user0.Favorites;
 favTitles:any = [""];
-constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar,private router:Router){
-   
-}
+constructor(public fetchApiData:FetchApiService,public snack:MatSnackBar,private router:Router){}
+
 @Input() confirm = "";
 ngOnInit():void{
- 
   this.getUserData();
-  this.getFavs();
- 
-}
+  this.getFavs();}
+
+
+/**delete the user, clear localstorage and navigate to the welcome page */
 deleteAccount():void{
   if(this.confirm==="unsubscribe")
     {
-  
-  const name = this.user0.Username;
-  this.fetchApiData.deleteUser(name).subscribe((resp)=>
+      const name = this.user0.Username;
+      this.fetchApiData.deleteUser(name).subscribe((resp)=>
   {
-    console.log(resp);
+      console.log(resp);
   })
-  }
+    }
+    
   this.snack.open("account deleted!","OK",{duration:2000});
   localStorage.clear();
   this.router.navigate(['welcome']);
   if(this.confirm!="unsubscribe"){ alert("please type 'unsubscribe' into the textbox above to unsubscribe...");}
 }
 
-
+/** The getfavs method, get all movies then combine the response with the favList, elements that match by id get pushed into the favTitles array */
 getFavs():any{
   this.fetchApiData.getAllMovies().subscribe((resp)=>
   {
@@ -59,7 +59,7 @@ getFavs():any{
 }
 
 @Output() userData ={Username:this.user0.Username,Password:this.user0.Password, Email:this.user0.Email,Birthday: this.user0.Birthday.slice(0,10),Favorites:this.user0.Favorites};
-
+/**update the user and set the local storage as well as update the user0 variable */
 updateUser():void{
   this.fetchApiData.editUser(this.userData,this.user0.Username).subscribe((Response)=>{
     console.log(Response);

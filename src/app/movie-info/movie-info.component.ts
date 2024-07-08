@@ -1,4 +1,5 @@
-import { Component,OnInit,Inject,Input, input } from '@angular/core';
+import { Component,OnInit,Inject } from '@angular/core';
+/**used for injection the data object into the mat dialog */
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-movie-info',
@@ -16,11 +17,9 @@ export class MovieInfoComponent implements OnInit {
       Director:string,
       Genre:string,
       Release: string,
-
-    Description:string
-  }){
-    
-  }
+      Description:string
+  }){}
+  
 ngOnInit(): void {
   
 }
