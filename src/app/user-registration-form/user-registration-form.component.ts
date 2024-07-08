@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 /**used to view dialogs */
 import { MatDialogRef } from '@angular/material/dialog';
-
+/** uses the fetchapi service */
 import { FetchApiService } from '../fetch-api-data.service';
 
 /**used to display notifications to the user */
@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class UserRegistrationFormComponent implements OnInit {
-
+/**read in the userName,Password,Email and Birthday and store into userData as an input */
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
 constructor(

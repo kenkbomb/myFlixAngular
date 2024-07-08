@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './profile-view.component.html',
   styleUrl: './profile-view.component.scss'
 })
-
+/**the profile view component, which shows all available info regarding the user */
 export class ProfileViewComponent {
 user0:any = JSON.parse(localStorage.getItem("user")||'');
 favList:[] = this.user0.Favorites;
@@ -57,7 +57,7 @@ getFavs():any{
     })
   })
 }
-
+/**output, userData, user when editing the users account information, via updateUser */
 @Output() userData ={Username:this.user0.Username,Password:this.user0.Password, Email:this.user0.Email,Birthday: this.user0.Birthday.slice(0,10),Favorites:this.user0.Favorites};
 /**update the user and set the local storage as well as update the user0 variable */
 updateUser():void{

@@ -20,7 +20,7 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+/**paths for routing */
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },

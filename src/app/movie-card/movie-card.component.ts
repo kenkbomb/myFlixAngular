@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './movie-card.component.html',
   styleUrl: './movie-card.component.scss'
 })
+/**the moviecard component, fetches and displays all movies as a list */
 export class MovieCardComponent implements OnInit {
 
   movies:any[] = [];
@@ -20,13 +21,14 @@ export class MovieCardComponent implements OnInit {
   
   }
   //-----------------------------------------------------------------------------------------------
-// call getmovies and getfavs right away...
-  ngOnInit():void{
+/**call getmovies and getfavs right away...*/
+ngOnInit():void{
     this.getMovies();
     this.getFavs();
   }
   //---------------------------------------------------------------------------------------
-  getFavs():void{
+  /**the getfavs function, retrieves a list of the users favorited movies */
+getFavs():void{
     
     const ud = JSON.parse(this.user);
     console.log(ud.Favorites)
@@ -34,11 +36,13 @@ export class MovieCardComponent implements OnInit {
     
     console.log(this.favList);
   }
-  getUser():void{
+/**gets the user */
+getUser():void{
     this.user = localStorage.getItem("user");
   }
   //------------------------------------------------------------------------------------
-  getMovies():void{
+/**gets all movies */
+getMovies():void{
     this.fetchMovies.getAllMovies().subscribe((resp:any)=>
       {
         this.movies = resp;
@@ -50,6 +54,7 @@ export class MovieCardComponent implements OnInit {
   );
   }
   //--------------------------------------------------------------------------------------
+  /**compares the favsList and movies list to identify which movies to set as favs */
 determineUserFavs(movie:string):any{
  if (this.favList.some((element) => element === movie)) {
     return true;
@@ -58,7 +63,8 @@ determineUserFavs(movie:string):any{
   }
 }
 //----------------------------------------------------------------------------------------------
-  addFavorite(id:string):void{
+/**adds a favorite movie to the users account by title */
+addFavorite(id:string):void{
     const ud = JSON.parse(this.user);
     this.fetchMovies.addFav(ud.Username,id).subscribe((resp:any)=>
     {
@@ -72,8 +78,8 @@ determineUserFavs(movie:string):any{
    
   }
   //-------------------------------------------------------------------------------------------
-
-  removeFavorite(id:string):void{
+/**removes a favorited movie from the users account by title */
+removeFavorite(id:string):void{
     const ud = JSON.parse(this.user);
     this.fetchMovies.removeFavorite(ud.Username,id).subscribe((resp)=>
     {
@@ -86,7 +92,8 @@ determineUserFavs(movie:string):any{
    
   }
   //---------------------------------------------------------------------------------------------
-  openInfoDialog(title:string,description:String,tagline:string,director:string,genre:string,release:string):void{
+  /**opens an info dialog displaying all info regarding the selected movie */
+openInfoDialog(title:string,description:String,tagline:string,director:string,genre:string,release:string):void{
    
     this.dialog.open(MovieInfoComponent,{
       width:'500px',
@@ -95,7 +102,7 @@ determineUserFavs(movie:string):any{
     });
     }
 
-    openGenreDialog(genre:string):void{
+openGenreDialog(genre:string):void{
       
     }
 

@@ -1,0 +1,5 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "entryPoints": ["./src/app/movie-card/movie-card.component.ts", "./src/app/nav-bar/nav-bar.component.ts","./src/app/movie-info/movie-info.component.ts","./src/app/profile-view/profile-view.component.ts","./src/app/user-login-form/user-login-form.component.ts","./src/app/user-registration-form/user-registration-form.component.ts","./src/app/welcome-page/welcome-page.component.ts","./src/app/fetch-api-data.service.ts"],
+    "out": "doc"
+}

@@ -22,13 +22,13 @@ export class FetchApiService {
     catchError(this.handleError)
     );
   }
-
+/**user login */
   public userLogin(userDetails: any): Observable<any> {
     return this.http.post(apiUrl + 'login', userDetails).pipe(
     catchError(this.handleError)
     );
   }
-  
+  /**get all movies */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
@@ -37,7 +37,7 @@ export class FetchApiService {
       })}
     );
   }
-
+/**get a movie by title */
   public getMovie(title:string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/'+ title, {headers: new HttpHeaders(
@@ -48,7 +48,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**get current user */
   getUser(): Observable<any> {
     
     const user = JSON.parse(localStorage.getItem('user') || '{}');
@@ -68,7 +68,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-  
+  /**get genre */
   public getGenre(genre:string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/'+genre, {headers: new HttpHeaders(
@@ -79,7 +79,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**get director */
   public getDirector(director:string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/'+director, {headers: new HttpHeaders(
@@ -90,7 +90,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**get favorite movies from a user */
   public getFavs(userName:string): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'users/'+userName+"/favs", {headers: new HttpHeaders(
@@ -101,7 +101,7 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**add a favorite movie to a users account */
   public addFav(userName:string,movie_id:string): Observable<any> {
     const token = localStorage.getItem('token');
     const favmov = {MovieID:movie_id}
@@ -113,13 +113,13 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**edit a users account details */
    public editUser(userDetails:any,userName:string): Observable<any> {
     const token = localStorage.getItem('token');
-    //console.log(userDetails.Username);
+    
     let body = userDetails;
     JSON.stringify(body);
-    //console.log(body);
+    
     return this.http.put<any>(apiUrl + 'users/'+userDetails.Username,body, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
@@ -128,9 +128,9 @@ export class FetchApiService {
       catchError(this.handleError)
     );
   }
-
+/**delete a user */
  public deleteUser(userName:string): Observable<any> {
-  //console.log(userName);
+  
     const token = localStorage.getItem('token');
     return this.http.delete(apiUrl + 'users/'+userName, {headers: new HttpHeaders(
       {
@@ -141,6 +141,7 @@ export class FetchApiService {
     );
   }
   //-------------------------------------------------------------------------------------------
+  /**remove a favorited movie by title from a users account */
    public removeFavorite(userName:string,movie_id:string): Observable<any> {
     const token = localStorage.getItem('token');
     const favmov = {MovieID:movie_id}
@@ -158,7 +159,7 @@ export class FetchApiService {
     const body = res;
     return body || { };
   }
-
+/**error handling */
 public handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error.message);
@@ -168,7 +169,7 @@ public handleError(error: HttpErrorResponse): any {
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`+error);
-        //alert("Opps, typo? please try again...");
+        
     }
   if(error.status!=200)
     {

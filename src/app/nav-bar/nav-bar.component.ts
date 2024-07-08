@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss'
 })
-
+/**the navbar component */
 export class NavBarComponent {
 
   constructor(private router:Router){}
@@ -16,7 +16,7 @@ export class NavBarComponent {
   
   getUser():string
 {
-  //console.log(this.name.Username);
+  
   return this.name.Username;
 }
 /**log out and clear local storage and navigate to welcome page */
@@ -33,6 +33,7 @@ gotoMovies():void
 {
   this.router.navigate(['movies']);
 }
+/**routing functions, goto movies and profile views */
 gotoProfile():void{
 this.router.navigate(['profile']);
 }
